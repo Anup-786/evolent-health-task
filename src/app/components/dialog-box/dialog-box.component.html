@@ -14,9 +14,13 @@
       <mat-form-field>
         <input placeholder="{{action}} Phone Number" matInput formControlName="phoneNumber" required>
       </mat-form-field>
-
-      <mat-slide-toggle ngDefaultControl (change)="onChange($event)" formControlName="status">Active
-      </mat-slide-toggle>
+      <div>
+        {{action}} Status:
+        <mat-slide-toggle ngDefaultControl (change)="onChange($event)" formControlName="status">
+          <span *ngIf="inputData.status">Active</span>
+          <span *ngIf="!inputData.status">Inactive</span>
+        </mat-slide-toggle>
+      </div>
     </ng-container>
 
     <ng-template #elseTemplate>
@@ -24,7 +28,8 @@
     </ng-template>
   </div>
   <div mat-dialog-actions>
-    <button mat-button type="submit" [disabled]="!addContactForm.valid">{{action}}</button>
-    <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+    <button mat-button type="submit" [disabled]="!addContactForm.valid" mat-flat-button
+      color="primary">{{action}}</button>
+    <button mat-button (click)="closeDialog()" type="button" mat-flat-button color="warn">Cancel</button>
   </div>
 </form>

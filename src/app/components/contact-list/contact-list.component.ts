@@ -53,19 +53,21 @@ export class ContactListComponent implements OnInit, OnDestroy {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        if (!result.data.status) {
-          result.data.status = false;
-        }
-        if (result.event === CONSTANTS.ACTIONS.ADD) {
-          this.addContact(result.data);
-        } else if (result.event === CONSTANTS.ACTIONS.UPDATE) {
-          this.updateContact(result.data);
-        } else if (result.event === CONSTANTS.ACTIONS.DELETE) {
-          this.deleteContact(result.data);
-        }
-      }
+      result ? this.processingResponse(result, dialogRef) : dialogRef.close();
     });
+  }
+
+  private processingResponse(result, dialogRef): void {
+    if (result.data && !result.data.status) {
+      result.data.status = false;
+    }
+    result.event === CONSTANTS.ACTIONS.ADD
+      ? this.addContact(result.data)
+      : result.event === CONSTANTS.ACTIONS.UPDATE
+      ? this.updateContact(result.data)
+      : result.event === CONSTANTS.ACTIONS.DELETE
+      ? this.deleteContact(result.data)
+      : dialogRef.close();
   }
 
   private addContact(inputData: Contact): void {
