@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "firstName": "Cassio",
+    "lastName": "Zen",
+    "phoneNumber": "+92232323",
+    "name": "Cassio Zen",
+    "email": "cassiozen@gmail.com",
+    "status": true
+  },
+  {
+    "id": 2,
+    "firstName": "Dan",
+    "lastName": "Abramov",
+    "phoneNumber": "+92232323",
+    "name": "Dan Abramov",
+    "email": "gaearon@somewhere.com",
+    "status": true
+  },
+  {
+    "id": 3,
+    "firstName": "Pete",
+    "lastName": "Hunt",
+    "phoneNumber": "+92232323",
+    "name": "Pete Hunt",
+    "email": "floydophone@somewhere.com",
+    "status": true
+  },
+  {
+    "id": 4,
+    "firstName": "Paul",
+    "lastName": "O’Shannessy",
+    "phoneNumber": "+92232323",
+    "name": "Paul O’Shannessy",
+    "email": "zpao@somewhere.com",
+    "status": true
+  },
+  {
+    "id": 5,
+    "firstName": "Ryan",
+    "lastName": "Florence",
+    "phoneNumber": "+92232323",
+    "name": "Ryan Florence",
+    "email": "rpflorence@somewhere.com",
+    "status": true
+  },
+  {
+    "id": 6,
+    "firstName": "Sebastian",
+    "lastName": "Markbage",
+    "phoneNumber": "+92232323",
+    "name": "Sebastian Markbage",
+    "email": "sebmarkbage@here.com",
+    "status": true
+  }
+]

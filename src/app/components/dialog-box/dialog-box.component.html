@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>Contact: <strong>{{action}}</strong></h1>
+<form [formGroup]="addContactForm" full-width shade0-wrapper-background full-height (ngSubmit)="doAction()">
+  <div mat-dialog-content>
+    <ng-container *ngIf="action != 'Delete'; else elseTemplate">
+      <mat-form-field>
+        <input placeholder="{{action}} First Name" matInput formControlName="firstName" required required>
+      </mat-form-field>
+      <mat-form-field>
+        <input placeholder="{{action}} Last Name" matInput formControlName="lastName" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input placeholder="{{action}} Email" matInput formControlName="email" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input placeholder="{{action}} Phone Number" matInput formControlName="phoneNumber" required>
+      </mat-form-field>
+
+      <mat-slide-toggle ngDefaultControl (change)="onChange($event)" formControlName="status">Active
+      </mat-slide-toggle>
+    </ng-container>
+
+    <ng-template #elseTemplate>
+      Are you sure to delete <b>{{inputData.firstName}} {{inputData.lastName }}</b>?
+    </ng-template>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button type="submit" [disabled]="!addContactForm.valid">{{action}}</button>
+    <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+  </div>
+</form>
