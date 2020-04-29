@@ -4,7 +4,8 @@ import {
   MatPaginator,
   MatDialog,
   MatTable,
-  MatTableDataSource
+  MatTableDataSource,
+  MatSnackBar
 } from '@angular/material';
 
 import { ContactService } from '@services/contact/contact.service';
@@ -26,7 +27,8 @@ export class ContactListComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly contactService: ContactService,
-    private readonly dialog: MatDialog
+    private readonly dialog: MatDialog,
+    private readonly snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -83,6 +85,7 @@ export class ContactListComponent implements OnInit, OnDestroy {
       });
       this.table.renderRows();
       this.dataSource.paginator = this.paginator;
+      this.openSnackBar(CONSTANTS.ACTIONS.ADD);
     }
   }
   private updateContact(inputData: Contact): void {
@@ -96,11 +99,29 @@ export class ContactListComponent implements OnInit, OnDestroy {
       }
       return true;
     });
+    this.openSnackBar(CONSTANTS.ACTIONS.UPDATE);
   }
   private deleteContact(inputData: Contact): void {
     this.dataSource.data = this.dataSource.data.filter(value => {
       return value.id !== inputData.id;
     });
+    this.openSnackBar(CONSTANTS.ACTIONS.DELETE);
+  }
+
+  private openSnackBar(action): void {
+    action === CONSTANTS.ACTIONS.ADD
+      ? this.snackBar.open(CONSTANTS.MESSAGES.CONTACT_ADDED, '', {
+          duration: CONSTANTS.DURATION_IN_SECONDS
+        })
+      : action === CONSTANTS.ACTIONS.UPDATE
+      ? this.snackBar.open(CONSTANTS.MESSAGES.CONTACT_UPDATED, '', {
+          duration: CONSTANTS.DURATION_IN_SECONDS
+        })
+      : action === CONSTANTS.ACTIONS.DELETE
+      ? this.snackBar.open(CONSTANTS.MESSAGES.CONTACT_DELETED, '', {
+          duration: CONSTANTS.DURATION_IN_SECONDS
+        })
+      : null;
   }
 
   ngOnDestroy() {

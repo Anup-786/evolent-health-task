@@ -7,7 +7,8 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatIconModule,
-  MatSlideToggleModule
+  MatSlideToggleModule,
+  MatSnackBarModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -22,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatInputModule,
     MatPaginatorModule,
     MatSlideToggleModule,
+    MatSnackBarModule,
     BrowserAnimationsModule
   ],
   exports: [
@@ -34,6 +36,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatInputModule,
     MatPaginatorModule,
     MatSlideToggleModule,
+    MatSnackBarModule,
     BrowserAnimationsModule
   ]
 })
