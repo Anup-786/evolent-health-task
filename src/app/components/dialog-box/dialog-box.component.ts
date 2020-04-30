@@ -21,7 +21,7 @@ export class DialogBoxComponent implements OnInit {
 
   constructor(
     private readonly dialogRef: MatDialogRef<DialogBoxComponent>,
-    @Optional() @Inject(MAT_DIALOG_DATA) public data: Contact,
+    @Optional() @Inject(MAT_DIALOG_DATA) private readonly data: Contact,
     private readonly formBuilder: FormBuilder
   ) {}
 
